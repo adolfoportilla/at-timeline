@@ -20,6 +20,7 @@ const TimelineAxis = ({ firstDay, totalDays }) => {
 
   const day = new Date(firstDay);
   const month = monthNames[day.getUTCMonth()];
+  const year = day.getFullYear();
 
   const timeline = () => {
     let first = new Date(firstDay);
@@ -27,8 +28,7 @@ const TimelineAxis = ({ firstDay, totalDays }) => {
     return (
       <div style={{display: "flex", justifyContent: "space-between"}}>
         {Array.from(Array(Math.ceil(totalDays/inc)+1), (e, i) => {
-          const el = <span>{first.getUTCDate()}</span>
-
+          const el = <span style={{fontSize: "10px"}} key={e}>{first.getUTCDate()}</span>
           first.setDate(first.getDate() + inc);
           return el;
         })}
@@ -37,7 +37,8 @@ const TimelineAxis = ({ firstDay, totalDays }) => {
   };
 
   return (
-    <div className="card">
+    <div>
+      <div>{year}</div>
       <div>{month}</div>
       {timeline()}
     </div>
