@@ -1,3 +1,9 @@
+/**
+ * Function that creates nested Array with events grouped in a maner that each
+ * row contains events that each start after the previous ends.
+ *
+ * @param {Array.<{id: Number, start: String, end: String, name: String}>} items - array with events
+ */
 const eventPreProcessing = items => {
   let result = [];
   items.forEach(el => {

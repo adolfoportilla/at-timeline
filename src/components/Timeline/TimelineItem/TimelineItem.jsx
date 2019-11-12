@@ -1,12 +1,16 @@
 import React from "react";
+import { string, number } from "prop-types";
 
 import Text from "./components/Text";
 import EventCard from "./components/EventCard";
 
+// Passing more props then needed, but in the future functionality
+// can be added using those properties (ie. tooltip).
 const TimelineItem = ({
   name,
   id,
   start,
+  dayWidth,
   end,
   marginLeft,
   marginTop,
@@ -23,12 +27,12 @@ const TimelineItem = ({
         maxWidth: maxWidth
       }}
     >
-      {width > 30 && (
+      {width > dayWidth && (
         <EventCard height={height} width={width} eventId={id}>
           <Text text={name} />
         </EventCard>
       )}
-      {width <= 30 && (
+      {width <= dayWidth && (
         <div className="flex">
           <EventCard height={height} width={width} eventId={id} />
           <Text text={name} maxWidth={maxWidth} />
@@ -39,3 +43,16 @@ const TimelineItem = ({
 };
 
 export default TimelineItem;
+
+TimelineItem.propTypes = {
+  name: string.isRequired,
+  id: number.isRequired,
+  start: string.isRequired,
+  dayWidth: number.isRequired,
+  end: string.isRequired,
+  marginLeft: number.isRequired,
+  marginTop: number.isRequired,
+  width: number.isRequired,
+  height: number.isRequired,
+  maxWidth: number.isRequired
+};

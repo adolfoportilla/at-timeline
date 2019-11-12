@@ -1,8 +1,9 @@
 import React from "react";
+import { arrayOf, number, shape, string, oneOfType } from "prop-types";
 
-const TimelineIntervals = ({ intervals, singleDay}) => {
+const TimelineIntervals = ({ intervals, singleDay }) => {
   return (
-    <div style={{ height: "20px"}}>
+    <div style={{ height: "20px" }}>
       {intervals.map((interval, i) => {
         const element = (
           <span className="font-size-10" key={i}>
@@ -30,3 +31,12 @@ const TimelineIntervals = ({ intervals, singleDay}) => {
 };
 
 export default TimelineIntervals;
+
+TimelineIntervals.propTypes = {
+  intervals: arrayOf(
+    shape({
+      title: oneOfType([string, number]).isRequired,
+      daysFromFirst: number.isRequired
+    })
+  )
+};

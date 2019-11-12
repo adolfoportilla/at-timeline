@@ -59,9 +59,9 @@ describe("dateHelper", () => {
     const result = dateHelper.generateMonths(firstDay, totalDays);
 
     expect(result.length).toBe(3);
-    expect(result[0]).toEqual({ month: 0, daysFromFirst: 0 });
-    expect(result[1]).toEqual({ month: 1, daysFromFirst: 30 });
-    expect(result[2]).toEqual({ month: 2, daysFromFirst: 30 + 28 });
+    expect(result[0]).toEqual({ title: "January", daysFromFirst: 0 });
+    expect(result[1]).toEqual({ title: "February", daysFromFirst: 30 });
+    expect(result[2]).toEqual({ title: "March", daysFromFirst: 30 + 28 });
   });
 
   test("getNExtFirstOfMonth", () => {
@@ -80,10 +80,10 @@ describe("dateHelper", () => {
     const result = dateHelper.generateMonths(firstDay, totalDays);
 
     expect(result.length).toBe(14);
-    expect(result[0]).toEqual({ month: 0, daysFromFirst: 0 });
-    expect(result[1]).toEqual({ month: 1, daysFromFirst: 30 });
-    expect(result[2]).toEqual({ month: 2, daysFromFirst: 30 + 28 });
-    expect(result[13]).toEqual({ month: 1, daysFromFirst: 395 });
+    expect(result[0]).toEqual({ title: "January", daysFromFirst: 0 });
+    expect(result[1]).toEqual({ title: "February", daysFromFirst: 30 });
+    expect(result[2]).toEqual({ title: "March", daysFromFirst: 30 + 28 });
+    expect(result[13]).toEqual({ title: "February", daysFromFirst: 395 });
   });
 
   test("generateYears - 1 year", () => {
@@ -93,7 +93,7 @@ describe("dateHelper", () => {
     const result = dateHelper.generateYears(firstDay, totalDays);
 
     expect(result.length).toBe(1);
-    expect(result[0]).toEqual({ year: 2018, daysFromFirst: 0 });
+    expect(result[0]).toEqual({ title: 2018, daysFromFirst: 0 });
   });
 
   test("generateYears - 2 years", () => {
@@ -103,7 +103,7 @@ describe("dateHelper", () => {
     const result = dateHelper.generateYears(firstDay, totalDays);
 
     expect(result.length).toBe(2);
-    expect(result[0]).toEqual({ year: 2018, daysFromFirst: 0 });
-    expect(result[1]).toEqual({ year: 2019, daysFromFirst: 332 });
+    expect(result[0]).toEqual({ title: 2018, daysFromFirst: 0 });
+    expect(result[1]).toEqual({ title: 2019, daysFromFirst: 332 });
   });
 });

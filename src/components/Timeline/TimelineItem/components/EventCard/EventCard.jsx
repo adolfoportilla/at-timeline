@@ -1,29 +1,14 @@
 import React from "react";
+import { number, object } from "prop-types";
 
-const airtable = [
+const airtableColors = [
   "#ffdb80", // original"#FCB400", // mustard
   "#fb84a2", // original "#F82B60", // pink
-  "#80dcff", // original "#18BFFF", //blue
-]
-
-let colors = [
-  "#81ecec",
-  "#74b9ff",
-  "#fdcb6e", // mustard
-  "#a29bfe", // lila
-  "#fab1a0", // salmon
-  "#ff7675", // pink
-  "#e17055", // orange
-  "#F03F6D", // Airtable pink
-  "#3377DC", // Airtable blue
-  "#F78BA7", // Airtable lighter pink
-  "#D0F0FE", // Airtable lighter blue
-  "#53CE60" // Airtable green
+  "#80dcff" // original "#18BFFF", //blue
 ];
 
 const getRandomColor = id => {
-  // return colors[id % colors.length];
-  return airtable[id % airtable.length];
+  return airtableColors[id % airtableColors.length];
 };
 
 const EventCard = ({ width, height, children, eventId }) => {
@@ -32,10 +17,11 @@ const EventCard = ({ width, height, children, eventId }) => {
     <div
       className="card"
       style={{
+        height: height,
         width: Math.max(width, MIN_WIDTH_ALLOWED),
         backgroundColor: getRandomColor(eventId),
         // Prevent card from shrinking
-        flexShrink: 0,
+        flexShrink: 0
       }}
     >
       {children}
@@ -44,3 +30,10 @@ const EventCard = ({ width, height, children, eventId }) => {
 };
 
 export default EventCard;
+
+EventCard.propTypes = {
+  width: number.isRequired,
+  height: number.isRequired,
+  eventId: number.isRequired,
+  children: object
+};
