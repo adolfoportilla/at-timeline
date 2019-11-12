@@ -63,7 +63,7 @@ const timelineItems = [
     id: 11,
     start: "2018-01-09",
     end: "2018-01-09",
-    name: "Another item -- --------"
+    name: "Another item"
   },
   {
     id: 12,
@@ -79,8 +79,8 @@ const timelineItems = [
   },
   {
     id: 14,
-    start: "2018-02-01",
-    end: "2018-02-02",
+    start: "2018-03-01",
+    end: "2018-03-01",
     name: "Fifth item with a super long name"
   }
 ];

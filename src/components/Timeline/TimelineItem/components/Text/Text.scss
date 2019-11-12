@@ -1,0 +1,10 @@
+@import '../../../../../scss/base.scss';
+
+.text {
+  margin-top: 1px;
+  margin-left: 3px;
+  font-size: 12px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

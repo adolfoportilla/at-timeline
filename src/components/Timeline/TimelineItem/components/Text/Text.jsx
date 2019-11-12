@@ -1,19 +1,10 @@
-import React from 'react';
+import React from "react";
 
-const Text = ({ text, limitWidth }) => {
-  const maxWidth = limitWidth ? "150px" : "";
+import "./Text.scss";
+
+const Text = ({ text}) => {
   return (
-    <div
-      style={{
-        marginTop: "1px",
-        marginLeft: "5px",
-        fontSize: "12px",
-        whiteSpace: "nowrap",
-        textOverflow: "ellipsis",
-        overflow: "hidden",
-        minWidth: "1em"
-      }}
-    >
+    <div className="text">
       {text}
     </div>
   );

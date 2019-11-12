@@ -1,3 +1,9 @@
 .flex {
   display: flex;
 }
+
+.flex-space-between {
+  @extend .flex;
+
+  justify-content: space-between;
+}

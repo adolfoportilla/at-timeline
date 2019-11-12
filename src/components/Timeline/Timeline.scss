@@ -15,7 +15,8 @@
   border: 0.5px solid #dddddd;
 }
 
-.scroll-y {
-  // overflow: scroll;
-  // width: 2000px;
+.scrolling-wrapper {
+  overflow-x: scroll;
+  white-space: nowrap;
+  overflow-y: hidden;
 }

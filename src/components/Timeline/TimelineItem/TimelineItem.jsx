@@ -1,29 +1,37 @@
 import React from "react";
 
-import Text from './components/Text/Text';
+import Text from "./components/Text";
+import EventCard from "./components/EventCard";
 
-const TimelineItem = ({ name, start, end, marginLeft, marginTop, width }) => {
-  width = width > 15 ? width : 15;
+const TimelineItem = ({
+  name,
+  id,
+  start,
+  end,
+  marginLeft,
+  marginTop,
+  width,
+  height,
+  maxWidth
+}) => {
   return (
     <div
+      className="relative"
       style={{
-        position: "relative",
         top: marginTop,
         left: marginLeft,
+        maxWidth: maxWidth
       }}
     >
-      {width > 50 && (
-        <div className="card" style={{width: width}}>
+      {width > 30 && (
+        <EventCard height={height} width={width} eventId={id}>
           <Text text={name} />
-        </div>
+        </EventCard>
       )}
-      {width <= 50 && (
+      {width <= 30 && (
         <div className="flex">
-          <div
-            className="card"
-            style={{ width: "10px"}}
-          />
-          <Text text={name} limitWidth={true} />
+          <EventCard height={height} width={width} eventId={id} />
+          <Text text={name} maxWidth={maxWidth} />
         </div>
       )}
     </div>
