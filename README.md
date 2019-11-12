@@ -11,10 +11,11 @@
 - Initially I was placing all text inside the cards, but then figured out that for short events I could place them outside to make the events more readable.
 - Spend more time figuring out the absolute positioning because is not perfect right now, there is an issue with the first row of elements. It displays correctly, but adding the drag and drop functionality would not work right now.
 - Write more tests while I was working on the assignment.
-- Right now the timeline is not interactive, it just displays data. I would add more interactiveness, as well as adding functionality to make it feel live, like the scrolling of the year, month, and day behave at different speed. Make the month and year be sticky until next month/year comes, etc.
+- Right now the timeline is not interactive, it just displays data. I would add more interactiveness, as well as adding functionality to make it feel alive, like the scrolling of the year, month, and day behave at different speeds. Make the month and year be sticky until next month/year comes, etc.
 ## How you made your design decisions. For example, if you looked at other timelines for inspiration, please note that.
-- I made the decisions to pre-process the events to group events by row, that way it facilitated the rendering of the events.
+- I made the decision to pre-process the events in order to group events by row, that way it facilitated the rendering of the events.
 - I decided to truncate text where I was not able to fit it to avoid wasting too much space by placing those events on a new line. User experience can be improved by placing a tooltip that lets you see the properties of the event.
+- I decided to create a scrollable timeline instead of displaying only events in the width of the screen. The scrollable container allows you to go until the end of the last event.
 - I took some inspiration from Asana timeline, dribble examples, and talking with a friend which is a designer/front-end.
 ## How you would test this if you had more time.
 - I will test all the components (for example using a library like enzyme), to test the rendering of the components as well as component properties.
