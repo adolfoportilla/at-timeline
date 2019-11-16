@@ -1,7 +1,21 @@
+$sm: 5px;
+$med: 10px;
+$lg: 15px;
+$xl: 20px;
+$xxl: 30px;
+
 .m-b-sm {
-  margin-bottom: 5px;
+  margin-bottom: $sm;
+}
+
+.m-b-xl {
+  margin-bottom: $xl;
+}
+
+.m-b-xxl {
+  margin-bottom: $xxl;
 }
 
 .m-l-sm {
-  margin-left: 5px;
+  margin-left: $sm;
 }

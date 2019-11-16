@@ -12,17 +12,14 @@ const TimelineIntervals = ({ intervals, singleDay }) => {
         );
         const addNotFirst = Math.sign(i) * singleDay;
         return (
-          <div key={i} className="relative">
-            <div className="absolute">
-              <div
-                className="relative"
-                style={{
-                  marginLeft: singleDay * interval.daysFromFirst + addNotFirst
-                }}
-              >
-                {element}
-              </div>
-            </div>
+          <div
+            key={i}
+            className="absolute"
+            style={{
+              marginLeft: singleDay * interval.daysFromFirst + addNotFirst
+            }}
+          >
+            {element}
           </div>
         );
       })}

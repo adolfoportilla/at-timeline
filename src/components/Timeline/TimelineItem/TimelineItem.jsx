@@ -7,20 +7,21 @@ import EventCard from "./components/EventCard";
 // Passing more props then needed, but in the future functionality
 // can be added using those properties (ie. tooltip).
 const TimelineItem = ({
-  name,
-  id,
-  start,
   dayWidth,
   end,
+  height,
+  id,
   marginLeft,
   marginTop,
+  maxWidth,
+  name,
+  start,
   width,
-  height,
-  maxWidth
+  wrapperClassName
 }) => {
   return (
     <div
-      className="relative"
+      className={wrapperClassName}
       style={{
         top: marginTop,
         left: marginLeft,
