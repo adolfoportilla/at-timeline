@@ -8,19 +8,19 @@ const findItemSpecs = ({
   item,
   col,
   rowItems,
-  dayWidth,
+  singleDayWidth,
   firstDay,
   lastDay
 }) => {
-  const itemWidth = dateHelper.substractDates(item.start, item.end) * dayWidth;
+  const itemWidth = dateHelper.substractDates(item.start, item.end) * singleDayWidth;
   const marginFromBeginning =
-    dateHelper.substractDates(firstDay, item.start) * dayWidth;
+    dateHelper.substractDates(firstDay, item.start) * singleDayWidth;
   const maxWidth =
     dateHelper.findNextDate({
       item,
       items: rowItems[col + 1],
       lastDay: lastDay
-    }) * dayWidth + itemWidth;
+    }) * singleDayWidth + itemWidth;
 
   return {
     itemWidth,
@@ -30,7 +30,7 @@ const findItemSpecs = ({
 };
 
 const TimelineBody = ({
-  dayWidth,
+  singleDayWidth,
   eventHeight,
   eventsProcessed,
   firstDay,
@@ -47,7 +47,7 @@ const TimelineBody = ({
           const { itemWidth, marginFromBeginning, maxWidth } = findItemSpecs({
             item,
             col,
-            dayWidth,
+            singleDayWidth,
             firstDay,
             lastDay,
             rowItems
@@ -64,7 +64,7 @@ const TimelineBody = ({
               height={eventHeight}
               maxWidth={maxWidth}
               marginTop={row * (eventHeight + 5)}
-              dayWidth={dayWidth}
+              singleDayWidth={singleDayWidth}
               wrapperClassName="absolute"
             />
           );

@@ -1,4 +1,4 @@
-@import '../../scss/base.scss';
+@import "../../scss/base";
 
 .border-bottom {
   border-bottom: 1px #e6e4e4 solid;
@@ -9,10 +9,10 @@
 }
 
 .card {
-  background-color: #f8f8f8;
+  background-color: $background;
   border-radius: 2px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-  border: 0.5px solid #dddddd;
+  border: 0.5px solid $lightGray;
 }
 
 .scrolling-wrapper {

@@ -61,12 +61,15 @@ const getMonthName = month => {
 };
 
 /**
- * Returns next day
+ * Returns X day from current date, were X is the number of days
+ * to add to current day.
  *
  * @param {Date} date
+ * @param {Number} add
  */
-const getNextDay = date => {
-  date.setUTCDate(date.getUTCDate() + 1);
+const getNextDate = (date, add = 1) => {
+  // Need to do max to avoid adding less than 1 day.
+  date.setUTCDate(date.getUTCDate() + Math.max(add, 1));
   return date;
 };
 
@@ -112,7 +115,7 @@ const getFirstOfYear = date => {
  * @param {String} firstDay
  * @param {Number} totalDays
  */
-const generateDays = (firstDay, totalDays) => {
+const generateDays = (firstDay, totalDays, zoom) => {
   const firstDate = new Date(firstDay);
   let current = new Date(firstDay);
   const lastDay = new Date(firstDay);
@@ -126,7 +129,7 @@ const generateDays = (firstDay, totalDays) => {
       daysFromFirst = substractDates(firstDate, current) - 1;
     }
     result.push({ title: current.getUTCDate(), daysFromFirst });
-    current = getNextDay(current);
+    current = getNextDate(current, zoom);
   }
   return result;
 };

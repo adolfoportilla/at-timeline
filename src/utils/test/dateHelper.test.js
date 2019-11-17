@@ -64,7 +64,7 @@ describe("dateHelper", () => {
     expect(result[2]).toEqual({ title: "March", daysFromFirst: 30 + 28 });
   });
 
-  test("getNExtFirstOfMonth", () => {
+  test("getNextFirstOfMonth", () => {
     const date = new Date("2018-03-05");
     const expected = new Date("2018-04-01");
 

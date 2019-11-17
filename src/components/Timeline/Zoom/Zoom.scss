@@ -1,0 +1,14 @@
+@import "../../../scss/base";
+
+.top-right {
+  right: 8.5px;
+  background-color: $background;
+  z-index: 1;
+  padding-right: $sm;
+  margin-top: $sm;
+}
+
+.zoom-button {
+  border-radius: 5px;
+  background-color: $lightGray;
+}

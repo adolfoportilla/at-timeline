@@ -7,7 +7,7 @@ import EventCard from "./components/EventCard";
 // Passing more props then needed, but in the future functionality
 // can be added using those properties (ie. tooltip).
 const TimelineItem = ({
-  dayWidth,
+  singleDayWidth,
   end,
   height,
   id,
@@ -28,12 +28,12 @@ const TimelineItem = ({
         maxWidth: maxWidth
       }}
     >
-      {width > dayWidth && (
+      {width > singleDayWidth && (
         <EventCard height={height} width={width} eventId={id}>
           <Text text={name} />
         </EventCard>
       )}
-      {width <= dayWidth && (
+      {width <= singleDayWidth && (
         <div className="flex">
           <EventCard height={height} width={width} eventId={id} />
           <Text text={name} maxWidth={maxWidth} />
@@ -49,7 +49,7 @@ TimelineItem.propTypes = {
   name: string.isRequired,
   id: number.isRequired,
   start: string.isRequired,
-  dayWidth: number.isRequired,
+  singleDayWidth: number.isRequired,
   end: string.isRequired,
   marginLeft: number.isRequired,
   marginTop: number.isRequired,

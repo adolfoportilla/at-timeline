@@ -1,43 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import { arrayOf, string, number, shape } from "prop-types";
 
 import TimelineHeader from "./TimelineHeader";
 import TimelineBody from "./TimelineBody";
+import Zoom from "./Zoom";
 
 import dateHelper from "../../utils/dateHelper";
 import eventPreProcessing from "../../utils/eventsPreProcessing";
+import zoomUtils from '../../utils/zoom';
 
 import "./Timeline.scss";
 
+const SINGLE_DAY_WIDTH = 30;
 const EXTRA_DAYS = 5;
+const EVENT_HEIGHT = 25;
 
 const Timeline = ({ items }) => {
-  const [firstDay, lastDay] = dateHelper.firstAndLast(items);
-  // Add 5 days extra in case there is an event ending at the end?
-  const lastDayWithExtra = dateHelper.addDays(lastDay, EXTRA_DAYS);
-  // If we want to support zoom, multiple totalDays * zoomFactor;
-  const totalDays = dateHelper.substractDates(firstDay, lastDayWithExtra);
+  const [zoom, updateZoom] = useState(1);
+
   const eventsProcessed = eventPreProcessing(items);
-  // Left these constants here because they could be affected in the future
-  // by the zoom level.
-  const DAY_WIDTH = 30;
-  const EVENT_HEIGHT = 25;
+
+  const singleDayWidth = zoomUtils.singleDayWidth(SINGLE_DAY_WIDTH , zoom);
+  const extraDays = zoomUtils.extraDays(EXTRA_DAYS, zoom);
+  const eventHeight = zoomUtils.eventHeight(EVENT_HEIGHT, zoom);
+
+  const [firstDay, lastDay] = dateHelper.firstAndLast(items);
+  const lastDayWithExtra = dateHelper.addDays(lastDay, extraDays);
+  const totalDays = dateHelper.substractDates(firstDay, lastDayWithExtra);
 
   return (
     <div className="relative card scrolling-wrapper">
-      <div className="m-l-sm" style={{ width: DAY_WIDTH * totalDays }}>
+      <div className="m-l-sm" style={{ width: singleDayWidth * totalDays }}>
+        <Zoom updateZoom={updateZoom} />
         <TimelineHeader
           firstDay={firstDay}
-          singleDay={DAY_WIDTH}
+          singleDayWidth={singleDayWidth}
           totalDays={totalDays}
           wrapperClassName="m-b-xl border-bottom"
+          zoom={zoom}
         />
         <TimelineBody
           firstDay={firstDay}
           lastDay={lastDayWithExtra}
           eventsProcessed={eventsProcessed}
-          eventHeight={EVENT_HEIGHT}
-          dayWidth={DAY_WIDTH}
+          eventHeight={eventHeight}
+          singleDayWidth={singleDayWidth}
           wrapperClassName="relative"
         />
       </div>

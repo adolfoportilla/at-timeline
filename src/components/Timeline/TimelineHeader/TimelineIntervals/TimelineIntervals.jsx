@@ -1,22 +1,22 @@
 import React from "react";
 import { arrayOf, number, shape, string, oneOfType } from "prop-types";
 
-const TimelineIntervals = ({ intervals, singleDay }) => {
+const TimelineIntervals = ({ intervals, singleDayWidth }) => {
   return (
-    <div style={{ height: "20px" }}>
+    <div style={{ height: "25px" }}>
       {intervals.map((interval, i) => {
         const element = (
           <span className="font-size-10" key={i}>
             {interval.title}
           </span>
         );
-        const addNotFirst = Math.sign(i) * singleDay;
+        const addNotFirst = Math.sign(i) * singleDayWidth;
         return (
           <div
             key={i}
             className="absolute"
             style={{
-              marginLeft: singleDay * interval.daysFromFirst + addNotFirst
+              marginLeft: singleDayWidth * interval.daysFromFirst + addNotFirst
             }}
           >
             {element}
@@ -35,5 +35,6 @@ TimelineIntervals.propTypes = {
       title: oneOfType([string, number]).isRequired,
       daysFromFirst: number.isRequired
     })
-  )
+  ),
+  singleDayWidth: number.isRequired,
 };
