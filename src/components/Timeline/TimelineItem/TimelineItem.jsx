@@ -1,5 +1,6 @@
 import React from "react";
 import { string, number } from "prop-types";
+import ReactTooltip from "react-tooltip";
 
 import Text from "./components/Text";
 import EventCard from "./components/EventCard";
@@ -8,19 +9,20 @@ import EventCard from "./components/EventCard";
 // can be added using those properties (ie. tooltip).
 const TimelineItem = ({
   singleDayWidth,
-  end,
   height,
   id,
+  item: {name, start, end},
   marginLeft,
   marginTop,
   maxWidth,
-  name,
-  start,
   width,
   wrapperClassName
 }) => {
   return (
     <div
+      data-tip={`${name} <br>start: ${start.substr(-2)}<br>end: ${end.substr(-2)}`}
+      data-multiline="true"
+      data-scroll-hide={false}
       className={wrapperClassName}
       style={{
         top: marginTop,
@@ -39,6 +41,7 @@ const TimelineItem = ({
           <Text text={name} maxWidth={maxWidth} />
         </div>
       )}
+      <ReactTooltip place="top" type="dark" effect="solid" />
     </div>
   );
 };

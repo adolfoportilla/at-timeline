@@ -29,7 +29,7 @@ const Timeline = ({ items }) => {
   const totalDays = dateHelper.substractDates(firstDay, lastDayWithExtra);
 
   return (
-    <div className="relative card scrolling-wrapper">
+    <div className="relative card scrolling-x-wrapper" style={{maxHeight: "90vh"}}>
       <div className="m-l-sm" style={{ width: singleDayWidth * totalDays }}>
         <Zoom updateZoom={updateZoom} />
         <TimelineHeader

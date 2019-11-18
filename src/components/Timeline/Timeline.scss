@@ -4,10 +4,6 @@
   border-bottom: 1px #e6e4e4 solid;
 }
 
-.timeline-board {
-  height: 200px;
-}
-
 .card {
   background-color: $background;
   border-radius: 2px;
@@ -15,7 +11,7 @@
   border: 0.5px solid $lightGray;
 }
 
-.scrolling-wrapper {
+.scrolling-x-wrapper {
   overflow-x: scroll;
   white-space: nowrap;
   overflow-y: hidden;

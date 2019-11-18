@@ -40,7 +40,7 @@ const TimelineBody = ({
   return (
     <div
       className={wrapperClassName}
-      style={{ height: eventHeight * (eventsProcessed.length + 2) }}
+      style={{ height: eventHeight * (eventsProcessed.length + 1.5)}}
     >
       {eventsProcessed.map((rowItems, row) => {
         return rowItems.map((item, col) => {
@@ -56,9 +56,7 @@ const TimelineBody = ({
             <TimelineItem
               key={item.id}
               id={item.id}
-              name={item.name}
-              start={item.start}
-              end={item.end}
+              item={item}
               marginLeft={marginFromBeginning}
               width={itemWidth}
               height={eventHeight}
