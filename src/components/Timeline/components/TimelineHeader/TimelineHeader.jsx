@@ -1,8 +1,8 @@
 import React from "react";
 import { number, string } from "prop-types";
 
-import TimelineIntervals from "./TimelineIntervals";
-import dateHelper from "../../../utils/dateHelper";
+import TimelineIntervals from "./components/TimelineIntervals";
+import dateHelper from "../../../../utils/dateHelper";
 
 const TimelineHeader = ({
   firstDay,
@@ -38,5 +38,11 @@ export default TimelineHeader;
 TimelineHeader.propTypes = {
   firstDay: string.isRequired,
   totalDays: number.isRequired,
-  singleDayWidth: number.isRequired
+  singleDayWidth: number.isRequired,
+  wrapperClassName: string,
+  zoom: number.isRequired
 };
+
+TimelineHeader.defaultProps = {
+  wrapperClassName: '',
+}

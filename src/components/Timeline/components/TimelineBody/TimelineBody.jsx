@@ -1,50 +1,32 @@
 import React from "react";
+import { arrayOf, number, shape, string } from "prop-types";
 
 import TimelineItem from "../TimelineItem";
 
-import dateHelper from "../../../utils/dateHelper";
-
-const findItemSpecs = ({
-  item,
-  col,
-  rowItems,
-  singleDayWidth,
-  firstDay,
-  lastDay
-}) => {
-  const itemWidth = dateHelper.substractDates(item.start, item.end) * singleDayWidth;
-  const marginFromBeginning =
-    dateHelper.substractDates(firstDay, item.start) * singleDayWidth;
-  const maxWidth =
-    dateHelper.findNextDate({
-      item,
-      items: rowItems[col + 1],
-      lastDay: lastDay
-    }) * singleDayWidth + itemWidth;
-
-  return {
-    itemWidth,
-    marginFromBeginning,
-    maxWidth
-  };
-};
+import utils from "./utils";
 
 const TimelineBody = ({
-  singleDayWidth,
   eventHeight,
   eventsProcessed,
   firstDay,
   lastDay,
+  singleDayWidth,
   wrapperClassName
 }) => {
   return (
     <div
       className={wrapperClassName}
-      style={{ height: eventHeight * (eventsProcessed.length + 1.5)}}
+      style={{
+        height: utils.calculateBodyHeight(eventsProcessed, eventHeight)
+      }}
     >
       {eventsProcessed.map((rowItems, row) => {
         return rowItems.map((item, col) => {
-          const { itemWidth, marginFromBeginning, maxWidth } = findItemSpecs({
+          const {
+            itemWidth,
+            marginFromBeginning,
+            maxWidth
+          } = utils.getItemProperties({
             item,
             col,
             singleDayWidth,
@@ -55,13 +37,12 @@ const TimelineBody = ({
           return (
             <TimelineItem
               key={item.id}
-              id={item.id}
               item={item}
               marginLeft={marginFromBeginning}
               width={itemWidth}
               height={eventHeight}
               maxWidth={maxWidth}
-              marginTop={row * (eventHeight + 5)}
+              marginTop={utils.calculateItemTopMargin(row, eventHeight)}
               singleDayWidth={singleDayWidth}
               wrapperClassName="absolute"
             />
@@ -73,3 +54,25 @@ const TimelineBody = ({
 };
 
 export default TimelineBody;
+
+TimelineBody.propTypes = {
+  eventHeight: number.isRequired,
+  eventsProcessed: arrayOf(
+    arrayOf(
+      shape({
+        end: string,
+        id: number,
+        name: string,
+        start: string
+      })
+    )
+  ),
+  firstDay: string.isRequired,
+  lastDay: string.isRequired,
+  singleDayWidth: number.isRequired,
+  wrapperClassName: string
+};
+
+TimelineBody.defaultProps = {
+  wrapperClassName: ""
+};

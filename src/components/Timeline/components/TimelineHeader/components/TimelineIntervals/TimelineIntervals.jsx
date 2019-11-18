@@ -1,25 +1,25 @@
 import React from "react";
 import { arrayOf, number, shape, string, oneOfType } from "prop-types";
 
+import "./TimelineIntervals.scss";
+
 const TimelineIntervals = ({ intervals, singleDayWidth }) => {
   return (
-    <div style={{ height: "25px" }}>
+    <div className="interval">
       {intervals.map((interval, i) => {
-        const element = (
-          <span className="font-size-10" key={i}>
-            {interval.title}
-          </span>
-        );
-        const addNotFirst = Math.sign(i) * singleDayWidth;
         return (
           <div
             key={i}
             className="absolute"
             style={{
-              marginLeft: singleDayWidth * interval.daysFromFirst + addNotFirst
+              marginLeft:
+                singleDayWidth * interval.daysFromFirst +
+                (i === 0 ? 0 : singleDayWidth) // Prevents first interval from having a margin to the left.
             }}
           >
-            {element}
+            <span className="title" key={i}>
+              {interval.title}
+            </span>
           </div>
         );
       })}
@@ -36,5 +36,5 @@ TimelineIntervals.propTypes = {
       daysFromFirst: number.isRequired
     })
   ),
-  singleDayWidth: number.isRequired,
+  singleDayWidth: number.isRequired
 };

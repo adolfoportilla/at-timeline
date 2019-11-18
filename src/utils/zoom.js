@@ -1,10 +1,16 @@
 /**
  * Calculate number of extra days based on zoom level.
+ * By changing the
  * @param {Number} days
  * @param {Number} zoom
  */
 const extraDays = (days, zoom) => {
-  return days * Math.pow(Math.max(1, zoom), 1.5);
+  // Zoom needs to be at least 1 to avoid returning a number that is less
+  // than the days passed in.
+  const minZoom = Math.max(1, zoom);
+
+  // The greater the exponent (number in the right), the more extra days will be added.
+  return days * Math.pow(minZoom, 1.5);
 };
 
 /**
@@ -19,6 +25,7 @@ const singleDayWidth = (day, zoom) => {
 
 /**
  * Calculate day height based on zoom level.
+ * Note: currently zoom is not taking into consideration for event height.
  *
  * @param {Number} height
  * @param {Number} zoom

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { arrayOf, string, number, shape } from "prop-types";
 
-import TimelineHeader from "./TimelineHeader";
-import TimelineBody from "./TimelineBody";
-import Zoom from "./Zoom";
+import TimelineHeader from "./components/TimelineHeader";
+import TimelineBody from "./components/TimelineBody";
+import Zoom from "./components/Zoom";
 
 import dateHelper from "../../utils/dateHelper";
 import eventPreProcessing from "../../utils/eventsPreProcessing";
@@ -11,6 +11,7 @@ import zoomUtils from '../../utils/zoom';
 
 import "./Timeline.scss";
 
+// Constants that affect a timeline event.
 const SINGLE_DAY_WIDTH = 30;
 const EXTRA_DAYS = 5;
 const EVENT_HEIGHT = 25;
@@ -29,7 +30,7 @@ const Timeline = ({ items }) => {
   const totalDays = dateHelper.substractDates(firstDay, lastDayWithExtra);
 
   return (
-    <div className="relative card scrolling-x-wrapper" style={{maxHeight: "90vh"}}>
+    <div className="relative card scrolling-x-wrapper">
       <div className="m-l-sm" style={{ width: singleDayWidth * totalDays }}>
         <Zoom updateZoom={updateZoom} />
         <TimelineHeader

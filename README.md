@@ -1,3 +1,21 @@
+## UPDATE FROM FIRST VERSION
+
+Features:
+- Added basic zoom functionality
+- Added tooltips
+- Fixed layout of events (the previous version did not do a good job of setting the layout)
+- Removed code that was not being used
+- Modularized code.
+
+Things that can be improved:
+- One of the things that I still was not able to figure out was a way to have "sticky" months and years, that way when you are scrolling, the month/year sticks in the left until the next month/year takes over.
+- Testing (no tests where added because of time constraints).
+- Vertical scrolling. Instead of going over 1 full height page, allow timeline to scroll vertically (the same functionality as horizontally). It get tricky because the scrolling bar is set at the end of the container (which sometimes is not visible) but a better user experience is to have it be fixed at the right side of the page.
+- Thinker about different zoom formats, right now I do a percent increase, but what if we could increase to be by weeks, months, years? or what if the user could decided the zoom level.
+
+
+------------------------------------------------------------
+
 ## How long you spent on the assignment.
 - About 15 hours
 ## What you like about your implementation.

@@ -1,6 +1,9 @@
 /**
- * Function that creates nested Array with events grouped in a maner that each
- * row contains events that each start after the previous ends.
+ * Function that creates a nested Array with events grouped in a way that each
+ * row contains events that each start after the previous one ends.
+ * Note: The result might not be the best one since I only check for the last element on the
+ *       next row to see if event can fit there, if we want to improve this function, check all the row
+ *       to see if there is an opening where event would fit.
  *
  * @param {Array.<{id: Number, start: String, end: String, name: String}>} items - array with events
  */

@@ -1,34 +1,33 @@
 import React from "react";
-import { string, number } from "prop-types";
+import { number, shape, string } from "prop-types";
 import ReactTooltip from "react-tooltip";
 
 import Text from "./components/Text";
 import EventCard from "./components/EventCard";
 
-// Passing more props then needed, but in the future functionality
-// can be added using those properties (ie. tooltip).
+import utils from './utils'
+
 const TimelineItem = ({
-  singleDayWidth,
   height,
-  id,
-  item: {name, start, end},
+  item: { end, id, name, start },
   marginLeft,
   marginTop,
   maxWidth,
+  singleDayWidth,
   width,
   wrapperClassName
 }) => {
   return (
     <div
-      data-tip={`${name} <br>start: ${start.substr(-2)}<br>end: ${end.substr(-2)}`}
-      data-multiline="true"
-      data-scroll-hide={false}
       className={wrapperClassName}
       style={{
         top: marginTop,
         left: marginLeft,
-        maxWidth: maxWidth
+        maxWidth
       }}
+      // Tooltip properties
+      data-tip={utils.getTooltipInfo(name, start, end)}
+      data-multiline="true"
     >
       {width > singleDayWidth && (
         <EventCard height={height} width={width} eventId={id}>
@@ -49,14 +48,21 @@ const TimelineItem = ({
 export default TimelineItem;
 
 TimelineItem.propTypes = {
-  name: string.isRequired,
-  id: number.isRequired,
-  start: string.isRequired,
-  singleDayWidth: number.isRequired,
-  end: string.isRequired,
+  height: number.isRequired,
+  item: shape({
+    end: string.isRequired,
+    id: number.isRequired,
+    name: string.isRequired,
+    start: string.isRequired
+  }).isRequired,
   marginLeft: number.isRequired,
   marginTop: number.isRequired,
+  maxWidth: number.isRequired,
+  singleDayWidth: number.isRequired,
   width: number.isRequired,
-  height: number.isRequired,
-  maxWidth: number.isRequired
+  wrapperClassName: string
+};
+
+TimelineItem.defaultProps = {
+  wrapperClassName: ""
 };
